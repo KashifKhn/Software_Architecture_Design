@@ -40,7 +40,7 @@ This project is licensed under the MIT License. See the [LICENSE](https://github
 
 ## Contact
 
-For any questions or feedback, feel free to reach out to me at [zarqankhn@gmail.com].
+For any questions or feedback, feel free to reach out to me at [ME](zarqankhn@gmail.com).
 
 ---
 
