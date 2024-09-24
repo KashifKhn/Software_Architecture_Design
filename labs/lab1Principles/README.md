@@ -86,8 +86,8 @@ It may be impossible to eliminate coupling but you should strive to minimize it.
 To run Code You Can use the any Terminal/shell
 
 ```
-javac Main.java
-java Main
+javac ./code/Main.java
+java ./code/Main
 ```
 
 also there will or Multiple Example in Code folder
