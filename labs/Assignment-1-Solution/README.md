@@ -189,4 +189,4 @@ A **PostgreSQL** database is configured using Docker, making setup and deploymen
 
 For a complete walkthrough, watch the video below explaining the project setup, structure, and each of the diagrams.
 
-[![Video Explanation](https://img.youtube.com/vi/<video_id>/0.jpg)](https://www.youtube.com/watch?v=<video_id>)
+[Video Explanation](https://drive.google.com/file/d/1O6tPSrR0IHRUh-oM8Q0yYo3n2JtcuNpP/view?usp=drive_link)
