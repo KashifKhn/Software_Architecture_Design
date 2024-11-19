@@ -4,16 +4,15 @@ import labmid.entity.Student;
 import labmid.filters.EligibilityFilter;
 import labmid.filters.InterviewFilter;
 import labmid.filters.MeritListFilter;
+import labmid.filters.PipeFilter;
 import labmid.filters.TestFilter;
 import labmid.repository.StudentRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
-
-
 @Service
 public class AdmissionService {
-  private final EligibilityFilter eligibilityFilter;
+  private final PipeFilter eligibilityFilter;
   private final TestFilter testFilter;
   private final InterviewFilter interviewFilter;
   private final MeritListFilter meritListFilter;
@@ -32,16 +31,16 @@ public class AdmissionService {
   }
 
   public void processAdmission(List<Student> students) {
-    List<Student> eligibleStudents = eligibilityFilter.filterForEligibility(students);
+    List<Student> eligibleStudents = eligibilityFilter.filter(students);
     notificationService.notifyObservers(eligibleStudents, "Eligible for the test.");
 
-    List<Student> testPassedStudents = testFilter.filterForTestResults(eligibleStudents);
+    List<Student> testPassedStudents = testFilter.filter(eligibleStudents);
     notificationService.notifyObservers(testPassedStudents, "Passed the test. Schedule your interview.");
 
-    List<Student> interviewPassedStudents = interviewFilter.filterForInterview(testPassedStudents);
+    List<Student> interviewPassedStudents = interviewFilter.filter(testPassedStudents);
     notificationService.notifyObservers(interviewPassedStudents, "Passed the interview. Await merit list.");
 
-    List<Student> meritList = meritListFilter.generateMeritList(interviewPassedStudents);
+    List<Student> meritList = meritListFilter.filter(interviewPassedStudents);
     notificationService.notifyObservers(meritList, "Congratulations! You are admitted.");
   }
 }
