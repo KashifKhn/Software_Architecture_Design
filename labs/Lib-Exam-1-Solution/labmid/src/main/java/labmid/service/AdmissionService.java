@@ -13,25 +13,27 @@ import java.util.List;
 @Service
 public class AdmissionService {
   private final PipeFilter eligibilityFilter;
-  private final TestFilter testFilter;
-  private final InterviewFilter interviewFilter;
-  private final MeritListFilter meritListFilter;
+  private final PipeFilter testFilter;
+  private final PipeFilter interviewFilter;
+  private final PipeFilter meritListFilter;
   private final NotificationService notificationService;
-  private final StudentRepository studentRepository;
 
-  public AdmissionService(EligibilityFilter eligibilityFilter, TestFilter testFilter,
-      InterviewFilter interviewFilter, MeritListFilter meritListFilter,
-      NotificationService notificationService, StudentRepository studentRepository) {
+  public AdmissionService(
+      PipeFilter eligibilityFilter,
+      PipeFilter testFilter,
+      PipeFilter interviewFilter,
+      PipeFilter meritListFilter,
+      NotificationService notificationService) {
     this.eligibilityFilter = eligibilityFilter;
     this.testFilter = testFilter;
     this.interviewFilter = interviewFilter;
     this.meritListFilter = meritListFilter;
     this.notificationService = notificationService;
-    this.studentRepository = studentRepository;
   }
 
   public void processAdmission(List<Student> students) {
     List<Student> eligibleStudents = eligibilityFilter.filter(students);
+
     notificationService.notifyObservers(eligibleStudents, "Eligible for the test.");
 
     List<Student> testPassedStudents = testFilter.filter(eligibleStudents);
