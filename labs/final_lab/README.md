@@ -5,6 +5,7 @@
 if you want to see full application
 
 [EasyBid Complete Backend](https://github.com/KashifKhn/easybid_java_spring/)
+<br />
 [EasyBid Complete Frontend](https://github.com/KashifKhn/easybid_client)
 
 ## **Tech Stack**
